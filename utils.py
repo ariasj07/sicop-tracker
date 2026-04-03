@@ -1,5 +1,10 @@
 SICOP_WEB_URL="https://www.sicop.go.cr/app/module/bid/public/tenders"
 API_SICOP="https://prod-api.sicop.go.cr/bid/api/v1/public/epCartel/searchEpCartelsByPpsType"
+API_LICIATION="https://prod-api.sicop.go.cr/bid/api/v1/public/epCartel/findPublishedById"
+"""
+params: cartelNo: int =  licitiacion id
+cartelSeq: str = "00"
+"""
 
 """
 # Headers enviados:
