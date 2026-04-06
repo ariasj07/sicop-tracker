@@ -58,6 +58,7 @@ def get_bienes_licitaciones():
                     fecha_apertura = data["regDt"]
                     vencimiento = data["biddocValDur"]
                     INSERTAR_LICITACIONES(
+                        ID_Licitacion=licitacion_id,
                         ID_Entidad=id_nuevo,
                         Descripcion=descripcion,
                         Monto_crc=float(monto),
