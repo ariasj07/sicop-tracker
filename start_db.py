@@ -14,7 +14,7 @@ def crear_db():
 
     c.execute("""
     CREATE TABLE IF NOT EXISTS LICITACIONES (
-        ID_Licitacion INTEGER PRIMARY KEY AUTOINCREMENT,
+        ID_Licitacion INTEGER PRIMARY KEY,
         Descripcion TEXT NOT NULL,
         Monto_crc REAL NOT NULL,
         N_Ofertas INTEGER NOT NULL,
@@ -57,30 +57,24 @@ def INSERTAR_ENTIDAD(Nombre):
 
     conn.commit()
     conn.close()
-    id_insertado = c.lastrowid 
-    conn.close()
-    return id_insertado
 
 
 
 
 
-
-def INSERTAR_LICITACIONES(Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad):
+def INSERTAR_LICITACIONES(ID_Licitacion, Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad):
     conn = sqlite3.connect('LICITACIONES.db')
     conn.execute("PRAGMA foreign_keys = ON")
     c = conn.cursor()
 
     c.execute("""
         INSERT INTO LICITACIONES 
-        (Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad, Created_AT)
-        VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
-    """, (Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad))
+        (ID_Licitacion, Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad, Created_AT)
+        VALUES (?, ?, ?, ?, ?, ?, ?, datetime('now'))
+    """, (ID_Licitacion, Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad))
 
     conn.commit()
     conn.close()
-
-
 
 
 
@@ -151,8 +145,13 @@ def ACTUALIZAR_ANALISIS(ID_Licitacion, nuevo_indice, nuevo_resumen):
     conn.commit()
     conn.close()
 
-if __name__ == "__main__":
-    crear_db()
+
+
+
+
+
+
+
 
 
 
