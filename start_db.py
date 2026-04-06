@@ -56,15 +56,16 @@ def INSERTAR_ENTIDAD(Nombre):
     """, (Nombre,))
     conn.commit()
     conn.close()
-
-    return c.lastrowid
-
-
-
+    id_insertado = c.lastrowid 
+    conn.close()
+    return id_insertado
 
 
 
-def INSERTAR_LICITACIONES(ID_Licitacion, Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad):
+
+
+
+def INSERTAR_LICITACIONES(Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad):
     conn = sqlite3.connect('LICITACIONES.db')
     conn.execute("PRAGMA foreign_keys = ON")
     c = conn.cursor()
@@ -146,7 +147,6 @@ def ACTUALIZAR_ANALISIS(ID_Licitacion, nuevo_indice, nuevo_resumen):
 
     conn.commit()
     conn.close()
-
 
 if __name__ == "__main__":
     crear_db()
