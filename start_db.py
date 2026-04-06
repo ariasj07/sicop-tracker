@@ -65,7 +65,7 @@ def INSERTAR_ENTIDAD(Nombre):
 
 
 
-def INSERTAR_LICITACIONES(Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad):
+def INSERTAR_LICITACIONES(ID_Licitacion, Descripcion, Monto_crc, N_Ofertas, Fecha_Apertura, Fecha_Cierre, ID_Entidad):
     conn = sqlite3.connect('LICITACIONES.db')
     conn.execute("PRAGMA foreign_keys = ON")
     c = conn.cursor()
